@@ -10,7 +10,7 @@ spec:
   containers:
     -
       name: "nexus3"
-      image: "simonmassey/simplepaassprint2"
+      image: "sonatype/nexus3"
       ports:
         -
           containerPort: 8081
