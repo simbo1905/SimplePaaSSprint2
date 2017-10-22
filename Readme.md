@@ -1,6 +1,30 @@
+
+
 # Nexus3 for OpenShift V3
 
-Setting up: 
+## Runing the example scripts locally
+
+```
+# download groovy into the containers persistent volume space
+cd nexus-data
+wget https://bintray.com/artifact/download/groovy/maven/apache-groovy-binary-2.4.8.zip
+unzip apache-groovy-binary-2.4.8.zip
+
+# download the demo scripts
+wget https://github.com/sonatype/nexus-book-examples/archive/nexus-3.x.zip
+unzip nexus-3.x.zip
+
+docker run -d -p 8081:8081 --name nexus3 -v /Users/Shared/nexus3/nexus-data:/nexus-data sonatype/nexus3
+docker exec -it nexus3 bash
+cd /nexus-data/script
+export GROOVY_HOME=/nexus-data/groovy-2.4.8
+export PATH=$PATH:$GROOVY_HOME/bin
+./provision.sh
+```
+
+## Installing into OpenShift V3
+
+Setting up on OpenShift: 
 
 ```
 # login to your openshift 
@@ -16,13 +40,6 @@ cat pvc.yaml | oc create -f -
 cat nexus3_pod.yaml | oc create -f -
 # create the "nexus3" service:
 cat nexus3_service.yaml | oc create -f -
-```
-
-Until I rebuilt the image with zip and other files I was having to get script onto it by bashing into the upstream image: 
-
-```
-
-/opt/jdk1.8.0_144/bin/javac UnZip.java   
 ```
 
 ### TODO 

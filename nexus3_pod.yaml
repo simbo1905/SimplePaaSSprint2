@@ -1,4 +1,5 @@
 # https://docs.openshift.com/container-platform/3.4/architecture/core_concepts/pods_and_services.html
+# note the original image is sonatype/nexus3 but I added wget, zip, unzip to be able to hack about on it
 apiVersion: "v1"
 kind: "Pod"
 metadata:
@@ -9,7 +10,7 @@ spec:
   containers:
     -
       name: "nexus3"
-      image: "sonatype/nexus3"
+      image: "simonmassey/simplepaassprint2"
       ports:
         -
           containerPort: 8081
