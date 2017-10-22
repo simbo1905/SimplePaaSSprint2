@@ -18,6 +18,13 @@ cat nexus3_pod.yaml | oc create -f -
 cat nexus3_service.yaml | oc create -f -
 ```
 
+Until I rebuilt the image with zip and other files I was having to get script onto it by bashing into the upstream image: 
+
+```
+
+/opt/jdk1.8.0_144/bin/javac UnZip.java   
+```
+
 ### TODO 
 
 [_] Upstream sonatype/nexus3 is using centos/centos7 rather than openshift/centos7

@@ -58,7 +58,7 @@ RUN curl -L https://www.getchef.com/chef/install.sh | bash \
     && rm -rf /var/cache/yum \
     && rm -rf /var/chef
 
-RUN yum -y update && yum -y install zip unzip && yum clean all
+RUN yum -y update && yum -y install zip unzip wget && yum clean all
 
 VOLUME ${NEXUS_DATA}
 
