@@ -41,7 +41,3 @@ cat nexus3_pod.yaml | oc create -f -
 # create the "nexus3" service:
 cat nexus3_service.yaml | oc create -f -
 ```
-
-### TODO 
-
-[_] Upstream sonatype/nexus3 is using centos/centos7 rather than openshift/centos7
