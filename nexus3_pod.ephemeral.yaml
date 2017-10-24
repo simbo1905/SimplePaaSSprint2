@@ -12,19 +12,18 @@ spec:
       name: "nexus3"
       resources:
         requests:
-          memory: "800Mi" 
+          memory: "1200Mi" 
         limits:
-          memory: "1024Mi" 
+          memory: "1200Mi" 
       image: "sonatype/nexus3"
       ports:
-        - containerPort: 8081
+        -
+          containerPort: 8081
           name: "nexus3"
       volumeMounts:
-        - mountPath: "/nexus-data"
-          name: "pvol"
+        - mountPath: /nexus-data
+          name: nexus3-1
   volumes:
-    -
-      name: "pvol"
-      persistentVolumeClaim:
-        claimName: "claim1"
+    - emptyDir: {}
+      name: nexus3-1
 
