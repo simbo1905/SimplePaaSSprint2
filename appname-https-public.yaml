@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Route
+metadata:
+  name: nexus-https-public
+  namespace: simon
+spec:
+  host: nexus.demo.dfe.secnix.co.uk
+  to:
+    kind: Service
+    name: nexus3
+    weight: 100
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Allow
+  wildcardPolicy: None
+status:
+  ingress:
+    - host: nexus.demo.dfe.secnix.co.uk
+      routerName: router
+      conditions:
+        - type: Admitted
+          status: 'True'
+          lastTransitionTime: '2017-10-27T18:27:41Z'
+      wildcardPolicy: None
+
